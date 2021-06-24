@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Exercicio_GabrielCerruti.Models.Noticias>
+@{
+    ViewBag.Title = "Noticias";
+}
+
+   <style>
+       .label{
+           color: #2e2f30;
+       }
+       .label-info {
+           background-color: #d9edf7;
+       }
+
+   </style>
+<hr />
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="color:black;"><b>Notícias</b></h3>
+     </div>
+    <div class="row center-block">
+
+       
+        @foreach (var item in Model)
+        {
+    <div class="col-md-4">
+        <div class="panel-body">
+            <h4>@Html.ActionLink(item.TITULO_NOTICIA, "LerNoticias", "Noticias", new { id = item.COD_NOTICIA, CAT = item.CATEGORIA_NOTICIA, TIT = item.TITULO_NOTICIA }, new { @class = "label label-info" })</h4>
+            <p>@Html.DisplayFor(model => item.CATEGORIA_NOTICIA)</p>
+            <p>@Html.DisplayFor(model => item.DATA_NOTICIA)</p>
+            
+            </div>
+
+        </div>
+
+        }
+    </div>
+</div>
+

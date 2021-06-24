@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "LerNoticias";
+    Exercicio_GabrielCerruti.Models.Noticias Note = (ViewBag.NoticiasBag != null) ? ViewBag.NoticiasBag : new Exercicio_GabrielCerruti.Models.Noticias();
+
+}
+<style>
+    .ColorActionLink {
+        color: black;
+    }
+
+        .ColorActionLink:hover {
+            color: #60b2e3;
+            text-decoration: none
+        }
+    .label {
+        color: #2e2f30;
+    }
+
+    .label-info {
+        background-color: #d9edf7;
+    }
+</style>
+
+
+
+<br />
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="color:black;"><b>@Note.TITULO_NOTICIA</b></h3>
+
+    </div>
+    <div class="row center-block">
+
+
+        <div class="panel-body">
+            <h4>@Note.DESCRICAO_NOTICIA </h4>
+            <h5>@Note.DATA_NOTICIA.ToLongDateString() </h5>
+            <h4>@Html.ActionLink(Note.CATEGORIA_NOTICIA, "LerCategorias", "Noticias", new { CAT = Note.CATEGORIA_NOTICIA }, new { @class = "label label-info" })</h4>
+
+        </div>
+    </div>
+</div>

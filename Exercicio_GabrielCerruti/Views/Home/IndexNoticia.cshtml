@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "IndexNoticia";
+    IEnumerable<Exercicio_GabrielCerruti.Models.Noticias>  Categoria =(ViewBag.DadosCategorias != null) ? ViewBag.DadosCategorias : new Exercicio_GabrielCerruti.Models.Noticias();
+    IEnumerable<Exercicio_GabrielCerruti.Models.Noticias> Noticias = (ViewBag.DadosNoticias != null) ? ViewBag.DadosNoticias : new Exercicio_GabrielCerruti.Models.Noticias();
+
+}
+
+
+
+<style>
+    .ColorActionLink {
+        color: black;
+    }
+
+        .ColorActionLink:hover {
+            color: #60b2e3;
+            text-decoration: none
+        }
+    .label {
+        color: #2e2f30;
+    }
+
+    .label-info {
+        background-color: #d9edf7;
+    }
+    .btn-info{
+        background-color: white;
+        color: black;
+    }
+    .btn-info:hover {
+        background-color: #d9edf7;
+        color: black;
+    }
+</style>
+
+<hr />
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="color:black;"><b>Categorias</b></h3>
+    </div>
+
+    @foreach (var item in Noticias)
+    {
+        <div class="panel-body">
+            <h5>@Html.ActionLink(item.CATEGORIA_NOTICIA, "LerCategorias", "Noticias", new { CAT = item.CATEGORIA_NOTICIA }, new { @class = "ColorActionLink" })</h5>
+        </div>
+    }
+</div>
+
+<br />
+<br />
+
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="color:black;"><b>Notícias</b></h3>
+     </div>
+    <div class="row center-block">
+
+        <br />
+        @foreach (var item in Categoria)
+        {
+    <div class="col-md-4">
+        <div class="panel-body">
+            <h4>@Html.ActionLink(item.TITULO_NOTICIA, "LerNoticias", "Noticias", new { id = item.COD_NOTICIA, CAT = item.CATEGORIA_NOTICIA, TIT = item.TITULO_NOTICIA }, new { @class = "label label-info" })</h4>
+            <p>@Html.DisplayFor(model => item.CATEGORIA_NOTICIA)</p>
+            <p>@Html.DisplayFor(model => item.DATA_NOTICIA)</p>
+            <br />
+            </div>
+        </div>
+
+        }
+    </div>
+</div>
+<a href="~/Noticias" type="button" class="btn btn-info"><b>Todas as Notícias</b></a>
+
+
+
+
+
+
+
+
+
+
