@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Exercicio_GabrielCerruti.Connection;
 
+
 namespace Exercicio_GabrielCerruti.Controllers
 {
     
@@ -32,5 +33,9 @@ namespace Exercicio_GabrielCerruti.Controllers
             var Cate = acoes.ListarCat(CAT);
             return View(Cate);
         }
+
+       
+
+
     }
 }

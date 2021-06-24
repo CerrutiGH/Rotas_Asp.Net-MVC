@@ -11,6 +11,24 @@ namespace Exercicio_GabrielCerruti.Connection
     {
         Conexao connection = new Conexao();
 
+
+        public void InsertNoticia(Noticias Noticia)
+        {
+
+
+            MySqlCommand insert = new MySqlCommand("INSERT INTO tb_Noticias(TITULO_NOTICIA, DESCRICAO_NOTICIA, CATEGORIA_NOTICIA, DATA_NOTICIA) values(@TITULO_NOTICIA, @DESCRICAO_NOTICIA, @CATEGORIA_NOTICIA, @DATA_NOTICIA)", connection.ConectarBD());
+            insert.Parameters.Add("@TITULO_NOTICIA", MySqlDbType.Text).Value = Noticia.TITULO_NOTICIA;
+            insert.Parameters.Add("@DESCRICAO_NOTICIA", MySqlDbType.Text).Value = Noticia.DESCRICAO_NOTICIA;
+            insert.Parameters.Add("@CATEGORIA_NOTICIA", MySqlDbType.VarChar).Value = Noticia.CATEGORIA_NOTICIA;
+            insert.Parameters.Add("@DATA_NOTICIA", MySqlDbType.DateTime).Value = Convert.ToDateTime(Noticia.DATA_NOTICIA);
+
+
+            insert.ExecuteNonQuery();
+            connection.DesconectarBD();
+
+
+        }
+
         public Noticias ListarNoticia(int noint)
         {
             MySqlCommand cmd = new MySqlCommand($"SELECT * FROM tb_Noticias WHERE COD_NOTICIA = {noint}", connection.ConectarBD());
@@ -106,6 +124,9 @@ namespace Exercicio_GabrielCerruti.Connection
             var DadosNoticia = cmd.ExecuteReader();
             return ListarTodasNoticias(DadosNoticia);
         }
+
+
+
 
 
     }

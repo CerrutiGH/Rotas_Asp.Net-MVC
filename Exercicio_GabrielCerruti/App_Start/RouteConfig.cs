@@ -37,6 +37,13 @@ namespace Exercicio_GabrielCerruti
                defaults: new { controller = "Noticias", action = "LerNoticias", id = UrlParameter.Optional }
                );
 
+
+            routes.MapRoute(
+              name: "Criatividade",
+              url: "AdicionarNews",
+              defaults: new { controller = "Home", action = "CadastrarNoticias", id = UrlParameter.Optional }
+              );
+
             routes.MapRoute(
                name: "Escola",
                url: "noticias/Escola",
@@ -46,8 +53,13 @@ namespace Exercicio_GabrielCerruti
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "Exercicio_GabrielCerruti.Controllers" }
+                );
+
+           
+
+
         }
     }
 }
